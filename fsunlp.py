@@ -7,6 +7,7 @@ def pos_tag(text: str) -> list:
   tokens = tokenise(text)
   pos_dct = retrieve_pos_dct()
   word_tag_pairs = look_up_tags(tokens, pos_dct)
+  user_input = query_pos(pos_dct)
   # output_tags(word_tag_pairs)
   return(word_tag_pairs)
 
@@ -48,6 +49,13 @@ def look_up_tags(tokens, pos_dct) -> list:
     word_tag_pairs.append((token, pos_tag))
   return(word_tag_pairs)
 
+def query_pos(pos_dct):
+  #Ask for input and check if the word is in the pos dictionary
+  user_word= input("Enter a word:")
+  if user_word in pos_dct:
+    print ('POS of your word:' + pos_dct[user_word])
+  else:
+    print ("I am sorry. This word is not in the text.")
 
 def output_tags(word_tag_pairs):
   """ Produce some kind of output file
